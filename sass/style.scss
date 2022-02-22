@@ -9,6 +9,8 @@
 $Violet: hsl(257, 40%, 49%);
 $Soft-Magenta: hsl(300, 69%, 71%);
 
+$break-point: 900px;
+
 /*
 // IMPORTS
 // =======
@@ -48,13 +50,45 @@ h1 {
   font-size: 1.5rem;
 }
 
+@media (min-width: $break-point) {
+  body {
+    text-align: left;
+  }
+
+  h1 {
+    //margin-top: 80px;
+    font-size: 2.45rem;
+  }
+
+  main {
+    p {
+      font-size: 1.1rem;
+    }
+  }
+
+  .btn-lg {
+    font-size: inherit;
+  }
+
+  .social-links {
+    text-align: right;
+
+    a {
+      text-align: center;
+    }
+  }
+
+  .attribution {
+    text-align: right;
+  }
+}
+
 /*
 // LAYOUT
 // ======
 */
 body {
   min-height: 100vh;
-  min-width: 100vw;
   background-color: $Violet;
 
   &::before {
@@ -66,7 +100,7 @@ body {
     min-height: 360px;
     background-image: url('../images/bg-mobile.svg');
     background-size: cover;
-    background-position: bottom;
+    background-position: center;
     z-index: -1;
   }
 }
@@ -91,6 +125,73 @@ h1 {
 
 .btn-lg {
   margin: 30px 0 20px;
+}
+
+@media (min-width: $break-point) {
+  body {
+    display: grid;
+    place-content: center;
+
+    &::before {
+      position: fixed;
+      height: 100%;
+      background-image: url('../images/bg-desktop.svg');
+      background-position: center;
+    }
+  }
+
+  .main-container {
+    max-width: 1440px;
+    display: grid;
+    grid-template:
+      'left right' auto
+      'footer footer' auto
+      / auto 1fr;
+  }
+
+  header {
+    grid-area: left;
+
+    &.container {
+      max-width: 700px;
+      margin: 60px 0 0 80px;
+    }
+  }
+
+  .logo {
+    width: 210px;
+  }
+
+  .hero-image {
+    margin-top: 100px;
+  }
+
+  main {
+    grid-area: right;
+    align-self: center;
+
+    &.container {
+      margin: 120px 80px 0px 60px;
+      max-width: 660px;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+    }
+  }
+
+  footer {
+    grid-area: footer;
+    justify-self: end;
+
+    &.container {
+      margin: 0 80px 40px;
+    }
+  }
+
+  .social-icon {
+    margin-left: 10px;
+  }
 }
 
 /*
@@ -121,7 +222,7 @@ h1 {
   text-decoration: none;
 
   .fa-brands {
-    vertical-align: middle;
+    vertical-align: bottom;
     font-style: normal;
   }
 
